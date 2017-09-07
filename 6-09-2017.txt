@@ -1,0 +1,231 @@
+
+  Setting environment for using XAMPP for Windows.
+689095@203-IMAC06 c:\xampp
+# mysql;
+ERROR 1044 (42000): Access denied for user ''@'localhost' to database ';'
+
+689095@203-IMAC06 c:\xampp
+# show databases;
+'show' is not recognized as an internal or external command,
+operable program or batch file.
+
+689095@203-IMAC06 c:\xampp
+# create databse mytestdb;
+'create' is not recognized as an internal or external command,
+operable program or batch file.
+
+689095@203-IMAC06 c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 3
+Server version: 10.1.21-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| nav                |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+6 rows in set (0.00 sec)
+
+MariaDB [(none)]> use nav;
+Database changed
+MariaDB [nav]> create table student( sid int(5),snm varchar(25),gender varchar(10),age int(3));
+Query OK, 0 rows affected (0.39 sec)
+
+MariaDB [nav]> create table t('use' int(1));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''use' int(1))' at line 1
+MariaDB [nav]> show tables;
++---------------+
+| Tables_in_nav |
++---------------+
+| student       |
++---------------+
+1 row in set (0.02 sec)
+
+MariaDB [nav]> select
+    ->
+    ->
+    ->
+    ->
+    ->
+    ->
+    ->
+    ->
+    ->
+    ->
+    ->
+    ->
+    ->
+    ->
+    ->
+    ->
+    ->
+    ->
+    ->
+    -> * from student;
+Empty set (0.00 sec)
+
+MariaDB [nav]> select * from student;
+Empty set (0.00 sec)
+
+MariaDB [nav]> INSERT INTO student values(1,"Navjot","female",22);
+Query OK, 1 row affected (0.06 sec)
+
+MariaDB [nav]> SELECT * FROM student;
++------+--------+--------+------+
+| sid  | snm    | gender | age  |
++------+--------+--------+------+
+|    1 | Navjot | female |   22 |
++------+--------+--------+------+
+1 row in set (0.00 sec)
+
+MariaDB [nav]> INSERT INTO student VALUES(2,"payal","f",22);
+Query OK, 1 row affected (0.06 sec)
+
+MariaDB [nav]> SELECT * FROM student;
++------+--------+--------+------+
+| sid  | snm    | gender | age  |
++------+--------+--------+------+
+|    1 | Navjot | female |   22 |
+|    2 | payal  | f      |   22 |
++------+--------+--------+------+
+2 rows in set (0.00 sec)
+
+MariaDB [nav]> INSERT INTO student(sid,snm,gender,age)values(3,"Aman","Male",27);
+Query OK, 1 row affected (0.05 sec)
+
+MariaDB [nav]> SELECT * FROM student;
++------+--------+--------+------+
+| sid  | snm    | gender | age  |
++------+--------+--------+------+
+|    1 | Navjot | female |   22 |
+|    2 | payal  | f      |   22 |
+|    3 | Aman   | Male   |   27 |
++------+--------+--------+------+
+3 rows in set (0.00 sec)
+
+MariaDB [nav]> INSERT INTO student values(4,"Randhir","Male",23);
+Query OK, 1 row affected (0.03 sec)
+
+MariaDB [nav]> INSERT INTO student values(5,"Gurpreet","Male",24);
+Query OK, 1 row affected (0.08 sec)
+
+MariaDB [nav]> SELECT * FROM student;
++------+----------+--------+------+
+| sid  | snm      | gender | age  |
++------+----------+--------+------+
+|    1 | Navjot   | female |   22 |
+|    2 | payal    | f      |   22 |
+|    3 | Aman     | Male   |   27 |
+|    4 | Randhir  | Male   |   23 |
+|    5 | Gurpreet | Male   |   24 |
++------+----------+--------+------+
+5 rows in set (0.00 sec)
+
+MariaDB [nav]> SELECT sid,snm FROM student;
++------+----------+
+| sid  | snm      |
++------+----------+
+|    1 | Navjot   |
+|    2 | payal    |
+|    3 | Aman     |
+|    4 | Randhir  |
+|    5 | Gurpreet |
++------+----------+
+5 rows in set (0.00 sec)
+
+MariaDB [nav]> SELECT * FROM student WHERE sid=4;
++------+---------+--------+------+
+| sid  | snm     | gender | age  |
++------+---------+--------+------+
+|    4 | Randhir | Male   |   23 |
++------+---------+--------+------+
+1 row in set (0.00 sec)
+
+MariaDB [nav]> SELECT * FROM student WHERE sid<=3;
++------+--------+--------+------+
+| sid  | snm    | gender | age  |
++------+--------+--------+------+
+|    1 | Navjot | female |   22 |
+|    2 | payal  | f      |   22 |
+|    3 | Aman   | Male   |   27 |
++------+--------+--------+------+
+3 rows in set (0.00 sec)
+
+MariaDB [nav]> SELECT * FROM student WHERE gender!="male";
++------+--------+--------+------+
+| sid  | snm    | gender | age  |
++------+--------+--------+------+
+|    1 | Navjot | female |   22 |
+|    2 | payal  | f      |   22 |
++------+--------+--------+------+
+2 rows in set (0.00 sec)
+
+MariaDB [nav]> SELECT * FROM student WHERE gender="female" AND sid=2;
+Empty set (0.00 sec)
+
+MariaDB [nav]>  SELECT * FROM student WHERE gender="female" OR sid=2;
++------+--------+--------+------+
+| sid  | snm    | gender | age  |
++------+--------+--------+------+
+|    1 | Navjot | female |   22 |
+|    2 | payal  | f      |   22 |
++------+--------+--------+------+
+2 rows in set (0.00 sec)
+
+MariaDB [nav]>  SELECT * FROM student WHERE gender="male" OR sid=2;
++------+----------+--------+------+
+| sid  | snm      | gender | age  |
++------+----------+--------+------+
+|    2 | payal    | f      |   22 |
+|    3 | Aman     | Male   |   27 |
+|    4 | Randhir  | Male   |   23 |
+|    5 | Gurpreet | Male   |   24 |
++------+----------+--------+------+
+4 rows in set (0.00 sec)
+
+MariaDB [nav]> DESC student;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| sid    | int(5)      | YES  |     | NULL    |       |
+| snm    | varchar(25) | YES  |     | NULL    |       |
+| gender | varchar(10) | YES  |     | NULL    |       |
+| age    | int(3)      | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+MariaDB [nav]> DSCRIBE student;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'DSCRIBE student' at line 1
+MariaDB [nav]> DESCRIBE student;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| sid    | int(5)      | YES  |     | NULL    |       |
+| snm    | varchar(25) | YES  |     | NULL    |       |
+| gender | varchar(10) | YES  |     | NULL    |       |
+| age    | int(3)      | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.03 sec)
+
+MariaDB [nav]> SELECT * FROM student WHERE age BETWEEN 20 AND 35;
+SELECT * FROM student WHERE age IN(20,30);
+
+ALTER TABLE student add marks int(5);
+DESC Student;
+SELECT * FROM Student;
+ALTER TABLE Student ADD City varchar(40) AFTER gender;
+SELECT * FROM Student;
+SELECT sid as StudentID from student;
+
